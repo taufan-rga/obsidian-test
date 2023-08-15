@@ -1,6 +1,6 @@
 import {Text, View} from 'react-native';
-import {TaskList} from '../../components/organisms/TaskList';
-import {AddTask} from '../../components/molecules/AddTask';
+import AddTask from '../../components/molecules/AddTask';
+import TaskList from '../../components/organisms/TaskList';
 
 export default function () {
   return (

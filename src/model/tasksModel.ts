@@ -17,7 +17,7 @@ export class TasksModel {
   }
 }
 
-export class TaskTemp {
+export class TaskTempModel {
   public text = new Observable<string>('');
 
   public changeText(text: string) {

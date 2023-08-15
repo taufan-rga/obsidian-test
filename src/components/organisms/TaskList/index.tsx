@@ -1,11 +1,11 @@
 import {DependenciesOf, injectComponent, useObserver} from 'react-obsidian';
 import {AppGraph} from '../../../graph/AppGraph';
-import {TaskView} from '../../molecules/TaskView';
 import {FlatList, View} from 'react-native';
+import TaskView from '../../molecules/TaskView';
 
 type Injected = DependenciesOf<AppGraph, 'model'>;
 
-export const TaskList = injectComponent(({model}: Injected) => {
+function _TaskList({model}: Injected) {
   const [tasks] = useObserver(model.tasks);
 
   return (
@@ -16,4 +16,6 @@ export const TaskList = injectComponent(({model}: Injected) => {
       ItemSeparatorComponent={() => <View style={{marginBottom: 16}} />}
     />
   );
-}, AppGraph);
+}
+
+export default injectComponent(_TaskList, AppGraph);
