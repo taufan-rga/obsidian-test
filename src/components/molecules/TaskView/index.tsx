@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {DependenciesOf, injectComponent, useObserver} from 'react-obsidian';
 import {Task} from '../../../model/task';
 import {AppGraph} from '../../../graph/AppGraph';
-import {Button, Text, TextInput, View} from 'react-native';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 
 type Own = {task: Task};
 type Injeted = DependenciesOf<AppGraph, 'model'>;
@@ -22,24 +22,40 @@ export const TaskView = injectComponent(({task, model}: Own & Injeted) => {
     );
   } else {
     taskContent = (
-      <View>
-        <Text> {text}</Text>
+      <View style={{gap: 8}}>
+        <Text>{text}</Text>
         <Button onPress={() => setIsEditing(true)} title="Edit" />
       </View>
     );
   }
   return (
-    <View>
+    <View style={{gap: 8}}>
       <Checkbox isChecked={isCompleted} onChange={e => setIsCompleted(e)} />
-      <Text>{taskContent}</Text>
+      <View>{taskContent}</View>
       <Button onPress={() => model.deleteTask(task)} title="Delete" />
     </View>
   );
 }, AppGraph);
 
-function Checkbox({}: {
-  onChange?(isChecked: boolean): void;
+function Checkbox({
+  onChange,
+  isChecked,
+}: {
+  onChange(isChecked: boolean): void;
   isChecked?: boolean;
 }) {
-  return <View></View>;
+  return (
+    <Button
+      title={isChecked ? 'UNCHECK' : 'CHECK'}
+      onPress={() => onChange(!isChecked)}
+    />
+  );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    width: '100%',
+    backgroundColor: 'red',
+    flex: 1,
+  },
+});

@@ -16,3 +16,11 @@ export class TasksModel {
     this.tasks.value = this.tasks.value.filter(t => t.id !== task.id);
   }
 }
+
+export class TaskTemp {
+  public text = new Observable<string>('');
+
+  public changeText(text: string) {
+    this.text.value = text;
+  }
+}
