@@ -5,6 +5,7 @@
   "books": [
     {
       "id": 1,
+      "description": "Things that will make you regret about what you have done on your first quarter century.",
       "title": "Never Do It Again!",
       "price": 20,
       "image_cover": "https://picsum.photos/200"

@@ -1,5 +1,5 @@
-import {View} from 'react-native';
+import BookList from './src/containers/book/BookList';
 
 export default function () {
-  <View />;
+  return <BookList />;
 }
