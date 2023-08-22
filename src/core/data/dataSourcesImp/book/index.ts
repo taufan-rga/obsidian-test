@@ -1,4 +1,5 @@
-import {
+import {transformBooks} from '../../../../parser/book';
+import book, {
   addBookApi,
   deleteBookApi,
   getBooksApi,
@@ -9,18 +10,8 @@ import {BookApiDataSource} from '../../dataSources/book';
 
 export default class BookApiDataSourceImp implements BookApiDataSource {
   async getBooks(): Promise<Book[]> {
-    try {
-      const result = await getBooksApi();
-      return result.data?.map((book: any) => ({
-        id: book.id,
-        title: book.title,
-        description: book.description,
-        price: book.price,
-        cover: book.image_cover,
-      }));
-    } catch (error) {
-      return [];
-    }
+    const {data} = await book.get();
+    return transformBooks(data);
   }
 
   async deleteBook(id: string): Promise<Book> {

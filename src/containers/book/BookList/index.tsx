@@ -1,13 +1,8 @@
-import {FlatList, Text, View, StyleSheet, Image} from 'react-native';
+import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import useAppViewModel from '../../../core/presentation/useAppViewModel';
-import {useEffect} from 'react';
 
 export default function () {
-  const {getBooks, books} = useAppViewModel();
-
-  useEffect(() => {
-    getBooks();
-  }, []);
+  const {books} = useAppViewModel();
 
   return (
     <View>

@@ -3,14 +3,14 @@ import {BookRepository} from '../../../domain/repositories/book';
 import {BookApiDataSource} from '../../dataSources/book';
 
 export default class BookRepositoryImp implements BookRepository {
-  private bookApiDataSource: BookApiDataSource;
+  bookApiDataSource: BookApiDataSource;
 
   constructor(bookApiDataSource: BookApiDataSource) {
     this.bookApiDataSource = bookApiDataSource;
   }
 
   async getBooks(): Promise<Book[]> {
-    return this.bookApiDataSource.getBooks();
+    return await this.bookApiDataSource.getBooks();
   }
 
   async insertBook(book: Book): Promise<Book> {
