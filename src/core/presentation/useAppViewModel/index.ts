@@ -1,11 +1,13 @@
-import BookApiDataSourceImp from '../../data/dataSourcesImp/book';
-import BookRepositoryImp from '../../data/repositoriesImp/book';
+import {DependenciesOf, injectHook} from 'react-obsidian';
+import BookGraph from '../../di/book';
 import {useGetBooksCase} from '../../domain/useCases/book';
 
-export default function () {
-  const bookRepositoryImp = new BookRepositoryImp(new BookApiDataSourceImp());
+type props = DependenciesOf<BookGraph, 'repo'>;
 
-  const books = useGetBooksCase(bookRepositoryImp);
+function useBookViewModel({repo}: props) {
+  const books = useGetBooksCase(repo);
 
   return {books};
 }
+
+export default injectHook(useBookViewModel, BookGraph);
