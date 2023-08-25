@@ -1,4 +1,5 @@
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {FlashList} from '@shopify/flash-list';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {DependenciesOf, injectComponent} from 'react-obsidian';
 import BookGraph from '../../../core/di/book';
 
@@ -8,8 +9,9 @@ function BookList({useBookListViewModel}: Props) {
   const {books} = useBookListViewModel();
 
   return (
-    <View>
-      <FlatList
+    <View style={{flex: 1}}>
+      <FlashList
+        estimatedItemSize={126}
         data={books}
         renderItem={({item}) => (
           <View style={styles.card}>
@@ -35,7 +37,7 @@ function BookList({useBookListViewModel}: Props) {
 export default injectComponent(BookList, BookGraph);
 
 const styles = StyleSheet.create({
-  container: {marginTop: 24},
+  container: {paddingTop: 24},
   card: {
     marginHorizontal: 16,
     padding: 16,
