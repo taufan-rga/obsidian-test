@@ -2,6 +2,7 @@ import {FlashList} from '@shopify/flash-list';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {DependenciesOf, injectComponent} from 'react-obsidian';
 import BookGraph from '../../../core/di/book';
+import {ImagePlaceholder} from '../../../assets/images';
 
 type Props = DependenciesOf<BookGraph, 'useBookListViewModel'>;
 
@@ -15,7 +16,11 @@ function BookList({useBookListViewModel}: Props) {
         data={books}
         renderItem={({item}) => (
           <View style={styles.card}>
-            <Image source={{uri: item.cover}} style={styles.cover} />
+            <Image
+              defaultSource={ImagePlaceholder}
+              source={{uri: item.cover}}
+              style={styles.cover}
+            />
             <View style={styles.contetWrap}>
               <View style={styles.content}>
                 <Text style={styles.titleText}>{item.title}</Text>
