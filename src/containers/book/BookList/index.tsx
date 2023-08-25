@@ -1,8 +1,11 @@
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
-import useAppViewModel from '../../../core/presentation/useAppViewModel';
+import {DependenciesOf, injectComponent} from 'react-obsidian';
+import BookGraph from '../../../core/di/book';
 
-export default function () {
-  const {books} = useAppViewModel();
+type Props = DependenciesOf<BookGraph, 'useBookListViewModel'>;
+
+function BookList({useBookListViewModel}: Props) {
+  const {books} = useBookListViewModel();
 
   return (
     <View>
@@ -28,6 +31,8 @@ export default function () {
     </View>
   );
 }
+
+export default injectComponent(BookList, BookGraph);
 
 const styles = StyleSheet.create({
   container: {marginTop: 24},
