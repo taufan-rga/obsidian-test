@@ -1,31 +1,30 @@
 import {renderHook, waitFor} from '@testing-library/react-native';
-import {QueryClientProvider} from 'react-query';
+import {mock} from 'jest-mock-extended';
+import {when} from 'jest-when';
 import {useGetBooksCase} from '.';
-import {queryClient} from '../../../../../config/reactQuery';
 import {BookRepository} from '../../../repositories/book';
+import {wrapper} from '../../../../../config/reactQuery';
 
-const mockBookRepository: BookRepository = {
-  getBooks: jest.fn().mockReturnValue([1, 2]),
-  insertBook: jest.fn(),
-  updateBook: jest.fn(),
-  deleteBook: jest.fn(),
-};
+let repository: BookRepository;
 
-queryClient.setDefaultOptions({queries: {cacheTime: 0}});
-
-const wrapper = ({children}: any) => (
-  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-);
+beforeEach(() => {
+  repository = mock();
+  when(repository.getBooks).mockResolvedValue([
+    {id: 'test', title: 'test', description: '', price: 0, cover: ''},
+    {id: 'test', title: 'test', description: '', price: 0, cover: ''},
+  ]);
+});
 
 describe('Get Books Use Case', () => {
   it('useGetBooksCase should call repository.getBooks', async () => {
-    const {result} = renderHook(() => useGetBooksCase(mockBookRepository), {
+    const {result} = renderHook(() => useGetBooksCase(repository), {
       wrapper,
     });
 
     await waitFor(() => {
       expect(result.current).toHaveLength(2);
-      expect(mockBookRepository.getBooks).toHaveBeenCalledTimes(1);
+      expect(result.current?.[0]?.title).toEqual('test');
+      expect(repository.getBooks).toHaveBeenCalledTimes(1);
     });
   });
 });
