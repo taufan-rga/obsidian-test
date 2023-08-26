@@ -14,7 +14,7 @@ interface BookTileProps {
 export default function ({description, price, title, cover}: BookTileProps) {
   return (
     <View style={styles.card}>
-      <Picture uri={cover} />
+      <Picture uri={cover} style={styles.cover} />
       <View style={styles.contetWrap}>
         <View style={styles.content}>
           <Phrase type={'mBold'}>{title}</Phrase>

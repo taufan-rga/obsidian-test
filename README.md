@@ -83,3 +83,4 @@ To learn more about React Native, take a look at the following resources:
 🎢 New feature
 🏃‍♂️ Ongoing implementation
 🪄 Refactor code
+⭐ Little enhancement

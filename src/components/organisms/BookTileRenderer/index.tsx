@@ -15,6 +15,7 @@ export default function ({data}: BookTileRendererProps) {
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       contentContainerStyle={styles.container}
+      estimatedItemSize={126}
     />
   );
 }
