@@ -82,3 +82,4 @@ To learn more about React Native, take a look at the following resources:
 🧪 Fix issue
 🎢 New feature
 🏃‍♂️ Ongoing implementation
+🪄 Refactor code

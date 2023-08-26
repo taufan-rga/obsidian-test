@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Phrase, Picture} from '../../atoms';
 import styles from './styles';
+import {currencyFormatter} from '../../../helpers';
 
 interface BookTileProps {
   cover?: string;
@@ -10,7 +11,7 @@ interface BookTileProps {
   price: number;
 }
 
-function BookTile({description, price, title, cover}: BookTileProps) {
+export default function ({description, price, title, cover}: BookTileProps) {
   return (
     <View style={styles.card}>
       <Picture uri={cover} />
@@ -20,11 +21,9 @@ function BookTile({description, price, title, cover}: BookTileProps) {
           <Phrase>{description}</Phrase>
         </View>
         <View style={styles.content}>
-          <Phrase>${price}</Phrase>
+          <Phrase>{currencyFormatter(price)}</Phrase>
         </View>
       </View>
     </View>
   );
 }
-
-export default BookTile;

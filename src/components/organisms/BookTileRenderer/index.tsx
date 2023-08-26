@@ -1,8 +1,8 @@
 import React from 'react';
 import {Book} from '../../../core/domain/models/book';
 import {ListView} from '../../atoms';
-import BookTile from '../../molecules/BookTile';
 import styles from './styles';
+import {BookTile} from '../../molecules';
 
 interface BookTileRendererProps {
   data?: Book[];
