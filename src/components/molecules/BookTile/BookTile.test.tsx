@@ -1,7 +1,7 @@
 import {render, screen} from '@testing-library/react-native';
-import BookTile from '.';
-import {DUMMY_IMAGE_URL} from '../../../constants/components';
-import testId from '../../../constants/testId';
+import {DUMMY_IMAGE_URL} from '~constants/components';
+import testId from '~constants/testId';
+import BookTile from './index';
 
 describe('Book Tile', () => {
   beforeEach(() => {

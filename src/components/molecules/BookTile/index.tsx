@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Phrase, Picture} from '../../atoms';
+import {Phrase, Picture} from '~components/atoms';
+import {currencyFormatter} from '~helpers';
 import styles from './styles';
-import {currencyFormatter} from '../../../helpers';
 
 interface BookTileProps {
   cover?: string;

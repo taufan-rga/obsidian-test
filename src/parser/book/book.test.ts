@@ -1,5 +1,5 @@
-import {transformBooks} from '.';
-import {DUMMY_IMAGE_URL} from '../../constants/components';
+import {DUMMY_IMAGE_URL} from '~constants/components';
+import {transformBooks} from './';
 
 const dummyData = [
   {

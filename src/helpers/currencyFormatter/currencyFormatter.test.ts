@@ -1,4 +1,4 @@
-import currencyFormatter from '.';
+import currencyFormatter from './';
 
 describe('Currency Formatter', () => {
   it('Given 20, returns $20', () => {

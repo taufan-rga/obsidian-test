@@ -1,19 +1,19 @@
 import React from 'react';
 import {Image, ImageProps} from 'react-native';
-import {ImagePlaceholder} from '../../../assets/images';
-import testId from '../../../constants/testId';
+import {ImagePlaceholder} from '~assets/images';
+import testId from '~constants/testId';
 
 interface PictureProps extends Omit<ImageProps, 'source'> {
   uri?: string;
 }
 
-function Picture({uri, ...props}: PictureProps) {
+function Picture({uri = ImagePlaceholder, ...props}: PictureProps) {
   return (
     <Image
       testID={testId.PICTURE_ATOM}
-      defaultSource={ImagePlaceholder}
+      defaultSource={{uri: ImagePlaceholder}}
       {...props}
-      source={!uri ? ImagePlaceholder : {uri}}
+      source={{uri}}
     />
   );
 }

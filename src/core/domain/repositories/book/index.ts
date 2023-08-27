@@ -1,4 +1,4 @@
-import {Book} from '../../models/book';
+import {Book} from '~core/domain/models/book';
 
 export interface BookRepository {
   getBooks(): Promise<Book[]>;

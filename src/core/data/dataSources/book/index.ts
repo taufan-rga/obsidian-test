@@ -1,4 +1,4 @@
-import {Book} from '../../../domain/models/book';
+import {Book} from '~core/domain/models/book';
 
 export interface BookApiDataSource {
   addBook(book: Book): Promise<Book>;

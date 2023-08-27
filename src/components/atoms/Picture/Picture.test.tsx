@@ -1,8 +1,8 @@
 import {render, screen} from '@testing-library/react-native';
-import Picture from '.';
-import {ImagePlaceholder} from '../../../assets/images';
-import {DUMMY_IMAGE_URL} from '../../../constants/components';
-import testId from '../../../constants/testId';
+import {ImagePlaceholder} from '~assets/images';
+import {DUMMY_IMAGE_URL} from '~constants/components';
+import testId from '~constants/testId';
+import Picture from './';
 
 describe('Picture', () => {
   it("Render image from 'uri' prop", () => {
@@ -14,6 +14,6 @@ describe('Picture', () => {
   it("'uri' is undefined, render default image placholder", () => {
     render(<Picture />);
     const picture = screen.getByTestId(testId.PICTURE_ATOM);
-    expect(picture.props.source).toEqual(ImagePlaceholder);
+    expect(picture.props.source.uri).toEqual(ImagePlaceholder);
   });
 });

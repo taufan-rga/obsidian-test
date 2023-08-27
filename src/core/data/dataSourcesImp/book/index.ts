@@ -1,7 +1,7 @@
-import {transformBooks} from '../../../../parser/book';
-import bookApi from '../../../../services/book';
-import {Book} from '../../../domain/models/book';
-import {BookApiDataSource} from '../../dataSources/book';
+import {BookApiDataSource} from '~core/data/dataSources/book';
+import {Book} from '~core/domain/models/book';
+import {transformBooks} from '~parser/book';
+import bookApi from '~services/book';
 
 export default class BookApiDataSourceImp implements BookApiDataSource {
   async getBooks(): Promise<Book[]> {

@@ -1,13 +1,9 @@
-import {Book} from '../../../domain/models/book';
-import {BookRepository} from '../../../domain/repositories/book';
-import {BookApiDataSource} from '../../dataSources/book';
+import {BookApiDataSource} from '~core/data/dataSources/book';
+import {Book} from '~core/domain/models/book';
+import {BookRepository} from '~core/domain/repositories/book';
 
 export default class BookRepositoryImp implements BookRepository {
-  bookApiDataSource: BookApiDataSource;
-
-  constructor(bookApiDataSource: BookApiDataSource) {
-    this.bookApiDataSource = bookApiDataSource;
-  }
+  constructor(private bookApiDataSource: BookApiDataSource) {}
 
   async getBooks(): Promise<Book[]> {
     return await this.bookApiDataSource.getBooks();

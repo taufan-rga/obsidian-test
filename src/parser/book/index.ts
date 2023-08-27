@@ -1,5 +1,5 @@
-import {Book} from '../../core/domain/models/book';
 import {getOr} from 'lodash/fp';
+import {Book} from '~core/domain/models/book';
 
 export function transformBooks(data: any): Book[] {
   if (Array.isArray(data)) {

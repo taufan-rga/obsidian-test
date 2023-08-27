@@ -1,5 +1,5 @@
 import {render, screen} from '@testing-library/react-native';
-import Phrase from '.';
+import Phrase from './';
 
 describe('Phrase', () => {
   it("Given 'Hello World', should return 'Hello World'", () => {

@@ -1,9 +1,9 @@
 import {renderHook, waitFor} from '@testing-library/react-native';
-import useBookListViewModel from '.';
 import {mock} from 'jest-mock-extended';
-import {BookRepository} from '../../domain/repositories/book';
 import {when} from 'jest-when';
-import {wrapper} from '../../../config/reactQuery';
+import {wrapper} from '~config/reactQuery';
+import {BookRepository} from '~core/domain/repositories/book';
+import useBookListViewModel from './';
 
 let repository: BookRepository;
 

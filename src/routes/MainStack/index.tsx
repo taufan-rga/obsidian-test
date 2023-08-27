@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import BookList from '../../containers/book/BookList';
+import {BookList} from '~containers/book';
 
 const Stack = createNativeStackNavigator();
 

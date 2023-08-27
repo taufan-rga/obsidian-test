@@ -1,5 +1,5 @@
-import { AxiosError } from 'axios';
-import { logging } from '~helpers';
+import {AxiosError} from 'axios';
+import {logging} from '~helpers';
 
 const LOCATION = 'src/utils/apiHelper/interceptors/error';
 
@@ -11,7 +11,10 @@ export default function (error: AxiosError) {
   if (statusCode === 401) {
     // Unauthorized user
     // logging('Unauthorized user', undefined, 'info', `${LOCATION}/401`);
-    return Promise.reject({ ...(error?.response?.data || {}), status: statusCode });
+    return Promise.reject({
+      ...(error?.response?.data || {}),
+      status: statusCode,
+    });
     return;
   }
 
@@ -20,19 +23,30 @@ export default function (error: AxiosError) {
     // logging(JSON.stringify(error?.response), 'er', 'error');
     // logging('Server error', undefined, 'error', `${LOCATION}/500`);
     // @ts-ignore
-    return Promise.reject({ ...(error?.response?.data?.error || {}), status: statusCode });
+    return Promise.reject({
+      ...(error?.response?.data || {}),
+      status: statusCode,
+    });
     return;
   }
 
   if (statusCode === 400) {
     // Bad Request
     // logging('Bad Request detected', undefined, 'error', `${LOCATION}/400`);
-    return Promise.reject({ ...(error?.response?.data || {}), status: statusCode });
+    return Promise.reject({
+      ...(error?.response?.data || {}),
+      status: statusCode,
+    });
   }
 
   if (statusCode === 422) {
     // Server unable to process the request
-    logging('Unable to process the request', undefined, 'info', `${LOCATION}/422`);
+    logging(
+      'Unable to process the request',
+      undefined,
+      'info',
+      `${LOCATION}/422`,
+    );
     return;
   }
 
