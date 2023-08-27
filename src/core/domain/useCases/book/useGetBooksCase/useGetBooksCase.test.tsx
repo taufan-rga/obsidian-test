@@ -38,7 +38,7 @@ describe('Get Books Use Case', () => {
       wrapper,
     });
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(result.current).toBeInstanceOf(Array);
       expect(result.current).toHaveLength(0);
       expect(repository.getBooks).toHaveBeenCalledTimes(1);
