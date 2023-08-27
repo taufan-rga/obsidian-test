@@ -9,21 +9,38 @@ let repository: BookRepository;
 
 beforeEach(() => {
   repository = mock();
-  when(repository.getBooks).mockResolvedValue([
-    {id: 'test', title: 'test', description: '', price: 0, cover: ''},
-    {id: 'test', title: 'test', description: '', price: 0, cover: ''},
-  ]);
 });
 
 describe('Get Books Use Case', () => {
   it('useGetBooksCase should call repository.getBooks', async () => {
+    when(repository.getBooks).mockResolvedValue([
+      {id: 'test1', title: 'test1', description: '', price: 0, cover: ''},
+      {id: 'test2', title: 'test2', description: '', price: 0, cover: ''},
+    ]);
+
     const {result} = renderHook(() => useGetBooksCase(repository), {
       wrapper,
     });
 
     await waitFor(() => {
       expect(result.current).toHaveLength(2);
-      expect(result.current?.[0]?.title).toEqual('test');
+      expect(result.current?.[0]?.title).toEqual('test1');
+      expect(repository.getBooks).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it('should return empty array when network call failed', async () => {
+    when(repository.getBooks).mockRejectedValue(
+      new Error('Something is wrong!'),
+    );
+
+    const {result} = renderHook(() => useGetBooksCase(repository), {
+      wrapper,
+    });
+
+    waitFor(() => {
+      expect(result.current).toBeInstanceOf(Array);
+      expect(result.current).toHaveLength(0);
       expect(repository.getBooks).toHaveBeenCalledTimes(1);
     });
   });

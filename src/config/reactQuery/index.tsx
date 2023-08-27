@@ -4,7 +4,9 @@ export const queryClient = new QueryClient();
 
 const queryClientTest = new QueryClient();
 
-queryClientTest.setDefaultOptions({queries: {cacheTime: 0}});
+queryClientTest.setDefaultOptions({
+  queries: {cacheTime: 0, retry: false, onError: () => {}},
+});
 
 export const wrapper = ({children}: any) => (
   <QueryClientProvider client={queryClientTest}>{children}</QueryClientProvider>
