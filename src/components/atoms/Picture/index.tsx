@@ -11,7 +11,7 @@ function Picture({uri = ImagePlaceholder, ...props}: PictureProps) {
   return (
     <Image
       testID={testId.PICTURE_ATOM}
-      defaultSource={{uri: ImagePlaceholder}}
+      defaultSource={ImagePlaceholder}
       {...props}
       source={{uri}}
     />
